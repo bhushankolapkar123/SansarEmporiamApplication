@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLibrary", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "..\DataAccessLibrary\DataAccessLibrary.csproj", "{EEEF8F93-4236-43C5-8D52-2FEEE2011D5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "..\ClassLibrary1\ClassLibrary1.csproj", "{19D502B8-4508-46D8-940F-AD2BA48F3576}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjectLibrary", "..\ClassLibrary1\BusinessObjectLibrary.csproj", "{19D502B8-4508-46D8-940F-AD2BA48F3576}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

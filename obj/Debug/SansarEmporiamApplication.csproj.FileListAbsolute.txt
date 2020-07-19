@@ -51,6 +51,9 @@ D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplicat
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\roslyn\VBCSCompiler.exe
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\roslyn\VBCSCompiler.exe.config
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Antlr3.Runtime.dll
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\BusinessLogicLibrary.dll
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\ClassLibrary1.dll
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\DataAccessLibrary.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\EntityFramework.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\EntityFramework.SqlServer.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Microsoft.AspNet.Identity.Core.dll
@@ -81,6 +84,12 @@ D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplicat
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\System.Web.WebPages.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\System.Web.WebPages.Razor.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\WebGrease.dll
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\BusinessLogicLibrary.pdb
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\BusinessLogicLibrary.dll.config
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\ClassLibrary1.pdb
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\ClassLibrary1.dll.config
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\DataAccessLibrary.pdb
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\DataAccessLibrary.dll.config
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Newtonsoft.Json.xml
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\System.Net.Http.Formatting.xml
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\System.Web.Helpers.xml
@@ -109,7 +118,10 @@ D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplicat
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\System.Web.Http.Owin.xml
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csprojAssemblyReference.cache
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csproj.CoreCompileInputs.cache
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csproj.CopyComplete
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.pdb
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Swashbuckle.Core.dll
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\WebActivatorEx.dll
