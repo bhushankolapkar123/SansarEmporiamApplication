@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
@@ -52,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -213,15 +217,80 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopDetailController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WholeSellerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CustomerDetailRepository.cs" />
+    <Compile Include="Models\ICustomerRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IShopRepository.cs" />
+    <Compile Include="Models\IStockRepository.cs" />
+    <Compile Include="Models\IWholeSellerRepository.cs" />
+    <Compile Include="Models\Log.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetCustomerByNameAndAddress_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetCustomerDetails_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetShopDetailsByID_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetShopDetails_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetStockDetailByName_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetStockDetail_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetWholeSellerByNameOrAddress_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcedureToGetWholesellerDetail_Result.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SansarEmporiamApplication.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SansarEmporiamApplication.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SansarEmporiamApplication.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SansarEmporiamApplication.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SansarEmporiamApplication.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopDetailRepository.cs" />
+    <Compile Include="Models\StockDetailRepository.cs" />
+    <Compile Include="Models\tblCustomerDetail.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblShopDetail.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblStockDetail.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblWholeSellerDetail.cs">
+      <DependentUpon>SansarEmporiamApplication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WholeSellerDetailRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -236,6 +305,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\SansarEmporiamApplication.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SansarEmporiamApplication.edmx</DependentUpon>
+      <LastGenOutput>SansarEmporiamApplication.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SansarEmporiamApplication.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SansarEmporiamApplication.edmx</DependentUpon>
+      <LastGenOutput>SansarEmporiamApplication.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -257,6 +336,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Models\SansarEmporiamApplication.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SansarEmporiamApplication.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SansarEmporiamApplication.edmx.diagram">
+      <DependentUpon>SansarEmporiamApplication.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -316,18 +402,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogicLibrary\BusinessLogicLibrary.csproj">
-      <Project>{b283270d-e194-4ad5-862e-df33b7c428ab}</Project>
-      <Name>BusinessLogicLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\BusinessObjectLibrary.csproj">
-      <Project>{19d502b8-4508-46d8-940f-ad2ba48f3576}</Project>
-      <Name>BusinessObjectLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
-      <Project>{eeef8f93-4236-43c5-8d52-2feee2011d5b}</Project>
-      <Name>DataAccessLibrary</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

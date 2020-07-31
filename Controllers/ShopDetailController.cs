@@ -1,37 +1,150 @@
-﻿using System;
+﻿using log4net;
+using SansarEmporiamApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BusinessObject;
-using DataAccessLibrary;
-using BusinessLogicLibrary;
-
 namespace SansarEmporiamApplication.Controllers
 {
     public class ShopDetailController : ApiController
     {
-        public IHttpActionResult PostNewStudent(tblShopDetail student)
+        IShopRepository shopRepository;
+        private readonly ILog log = LogManager.GetLogger("API Logger");
+
+        public ShopDetailController() : this(new ShopDetailRepository()) { }
+
+        public ShopDetailController(IShopRepository repository)
         {
-            if (!ModelState.IsValid)
-                return BadRequest("Invalid data.");
+            shopRepository = repository;
+        }
+            
+        [HttpPost]
+        public IHttpActionResult PostNewShopDetail(tblShopDetail shopDetail)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest("Invalid data.");
+                    shopRepository.AddShopDetails(shopDetail);
+                    shopRepository.Save();
+                    return Ok();
+            }
+            catch (Exception ex )
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            tblShopDetail ObjUBO = new tblShopDetail();
+            }
+            
+        }
+        [HttpGet]
+        [Route("api/customers/")]
+        public IHttpActionResult GetShopDetail()
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest("Invalid data.");
+                IList<tblShopDetail> shopDetails = null;
+                shopDetails = shopRepository.GetAllShopDetails().ToList();
+
+                log.Info("Log Info Message");
+                log.Debug("Log Debug Message");
+                log.Error("Log Error Message");
+                log.Warn("Log Warning Message");
+
+                if (shopDetails.Count == 0)
+                {
+                    return NotFound();
+                }
 
 
-            ObjUBO.ShopName = student.ShopName;
-            ObjUBO.ShopAddress = student.ShopAddress;
-            ObjUBO.OwnerName = student.OwnerName;
-            ObjUBO.RegistrationNumber = student.RegistrationNumber;
-            ObjUBO.MobileNumber = student.MobileNumber;
+                return Ok(shopDetails);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            BusinessLogic objUBL = new BusinessLogic();
+            }
 
-            int result = objUBL.SaveUserregisrationBL(ObjUBO);
+        }
+        [HttpGet]
+        [Route("api/shopdetail/{id}")]
+        public IHttpActionResult GetShopDetailByID(int shopID)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest("Invalid data.");
 
+                tblShopDetail shopDetails = null;
 
-            return Ok();
+                shopDetails = shopRepository.GetAllShopDetailByID(shopID);
+
+                if (!shopDetails.Equals(0))
+                {
+                    return NotFound();
+                }
+                return Ok(shopDetails);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+            }
+
+        }
+        [HttpDelete]
+        public IHttpActionResult DeletShopDetail(int ShopID)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest("Invalid data.");
+                shopRepository.DeleteShopDetail(ShopID);
+                shopRepository.Save();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+            }
+
+        }
+        [HttpPut]
+        public IHttpActionResult UpdateShopDetail(tblShopDetail shopDetail)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest("Invalid data.");
+                shopRepository.UpdateShopDetail(shopDetail);
+                shopRepository.Save();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+            }
+
         }
     }
 }

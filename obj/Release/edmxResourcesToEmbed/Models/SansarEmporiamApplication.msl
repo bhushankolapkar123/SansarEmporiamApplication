@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SansarEmporiamApplicationModelStoreContainer" CdmEntityContainer="SansarEmporiamApplicationEntities">
+    <EntitySetMapping Name="tblCustomerDetails">
+      <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblCustomerDetail">
+        <MappingFragment StoreEntitySet="tblCustomerDetail">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="PurchaseItem" ColumnName="PurchaseItem" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="Balnace" ColumnName="Balnace" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="RemainderMessage" ColumnName="RemainderMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShopDetails">
+      <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblShopDetail">
+        <MappingFragment StoreEntitySet="tblShopDetail">
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStockDetails">
+      <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblStockDetail">
+        <MappingFragment StoreEntitySet="tblStockDetail">
+          <ScalarProperty Name="StockID" ColumnName="StockID" />
+          <ScalarProperty Name="WholeSellPrice" ColumnName="WholeSellPrice" />
+          <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+          <ScalarProperty Name="NumberOfCount" ColumnName="NumberOfCount" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWholeSellerDetails">
+      <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblWholeSellerDetail">
+        <MappingFragment StoreEntitySet="tblWholeSellerDetail">
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ProcedureToAddShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToAddShopDetails" />
+    <FunctionImportMapping FunctionImportName="ProcedureToDeleteShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToDeleteShopDetails" />
+    <FunctionImportMapping FunctionImportName="ProcedureToGetShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetShopDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetShopDetails_Result">
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProcedureToGetShopDetailsByID" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetShopDetailsByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetShopDetailsByID_Result">
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProcedureToUpdateShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToUpdateShopDetails" />
+  </EntityContainerMapping>
+</Mapping>

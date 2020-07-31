@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SansarEmporiamApplicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Thread" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Logger" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Exception" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="tblCustomerDetail">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseItem" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseDate" Type="varchar" MaxLength="50" />
+          <Property Name="TotalAmount" Type="varchar" MaxLength="50" />
+          <Property Name="PaidAmount" Type="varchar" MaxLength="50" />
+          <Property Name="Balance" Type="varchar" MaxLength="50" />
+          <Property Name="DueDate" Type="varchar" MaxLength="50" />
+          <Property Name="RemainderMessage" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblShopDetail">
+          <Key>
+            <PropertyRef Name="ShopID" />
+          </Key>
+          <Property Name="ShopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopName" Type="varchar" MaxLength="50" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="50" />
+          <Property Name="ShopAddress" Type="varchar" MaxLength="50" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStockDetail">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WholeSellPrice" Type="varchar" MaxLength="50" />
+          <Property Name="SellingPrice" Type="varchar" MaxLength="50" />
+          <Property Name="NumberOfCount" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="varchar" MaxLength="50" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblWholeSellerDetail">
+          <Key>
+            <PropertyRef Name="ShopID" />
+          </Key>
+          <Property Name="ShopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopName" Type="varchar" MaxLength="50" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="50" />
+          <Property Name="ShopAddress" Type="varchar" MaxLength="50" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="ProcedureToAddCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerAddress" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseItem" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="TotalAmount" Type="varchar" Mode="In" />
+          <Parameter Name="PaidAmount" Type="varchar" Mode="In" />
+          <Parameter Name="Balance" Type="varchar" Mode="In" />
+          <Parameter Name="DueDate" Type="varchar" Mode="In" />
+          <Parameter Name="RemainderMessage" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToAddShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopName" Type="varchar" Mode="In" />
+          <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+          <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+          <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToAddStockDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemName" Type="varchar" Mode="In" />
+          <Parameter Name="WholeSellPrice" Type="varchar" Mode="In" />
+          <Parameter Name="SellingPrice" Type="varchar" Mode="In" />
+          <Parameter Name="NumberOfCount" Type="varchar" Mode="In" />
+          <Parameter Name="Weight" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToAddWholeSellerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopName" Type="varchar" Mode="In" />
+          <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+          <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+          <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToDeleteCustmerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToDeleteShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToDeleteStockDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StockID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToDeleteWholeSellerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToGetCustomerByNameAndAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstNameOrAddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToGetCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcedureToGetShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcedureToGetShopDetailsByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToGetStockDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcedureToGetStockDetailByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToGetWholeSellerByNameOrAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstNameOrAddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToGetWholesellerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcedureToUpdateCustomerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerAddress" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseItem" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="TotalAmount" Type="varchar" Mode="In" />
+          <Parameter Name="PaidAmount" Type="varchar" Mode="In" />
+          <Parameter Name="Balance" Type="varchar" Mode="In" />
+          <Parameter Name="DueDate" Type="varchar" Mode="In" />
+          <Parameter Name="RemainderMessage" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToUpdateShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopID" Type="int" Mode="In" />
+          <Parameter Name="ShopName" Type="varchar" Mode="In" />
+          <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+          <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+          <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToUpdateStockDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StockID" Type="int" Mode="In" />
+          <Parameter Name="WholeSellPrice" Type="varchar" Mode="In" />
+          <Parameter Name="SellingPrice" Type="varchar" Mode="In" />
+          <Parameter Name="NumberOfCount" Type="varchar" Mode="In" />
+          <Parameter Name="Weight" Type="varchar" Mode="In" />
+          <Parameter Name="ItemName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProcedureToUpdateWholeSellerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShopID" Type="int" Mode="In" />
+          <Parameter Name="ShopName" Type="varchar" Mode="In" />
+          <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+          <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+          <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SansarEmporiamApplicationModelStoreContainer">
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerDetail" EntityType="Self.tblCustomerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblShopDetail" EntityType="Self.tblShopDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStockDetail" EntityType="Self.tblStockDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWholeSellerDetail" EntityType="Self.tblWholeSellerDetail" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SansarEmporiamApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCustomerDetail">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaidAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RemainderMessage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblShopDetail">
+          <Key>
+            <PropertyRef Name="ShopID" />
+          </Key>
+          <Property Name="ShopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblStockDetail">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WholeSellPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SellingPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfCount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblWholeSellerDetail">
+          <Key>
+            <PropertyRef Name="ShopID" />
+          </Key>
+          <Property Name="ShopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SansarEmporiamApplicationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCustomerDetails" EntityType="Self.tblCustomerDetail" />
+          <EntitySet Name="tblShopDetails" EntityType="Self.tblShopDetail" />
+          <EntitySet Name="tblStockDetails" EntityType="Self.tblStockDetail" />
+          <EntitySet Name="tblWholeSellerDetails" EntityType="Self.tblWholeSellerDetail" />
+          <FunctionImport Name="ProcedureToAddShopDetails" ReturnType="Collection(Decimal)">
+            <Parameter Name="ShopName" Mode="In" Type="String" />
+            <Parameter Name="OwnerName" Mode="In" Type="String" />
+            <Parameter Name="ShopAddres" Mode="In" Type="String" />
+            <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToDeleteShopDetails">
+          <Parameter Name="ShopID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToGetShopDetails" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetShopDetails_Result)">
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToGetShopDetailsByID" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetShopDetailsByID_Result)">
+          <Parameter Name="ShopID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToUpdateShopDetails">
+            <Parameter Name="ShopID" Mode="In" Type="Int32" />
+            <Parameter Name="ShopName" Mode="In" Type="String" />
+            <Parameter Name="OwnerName" Mode="In" Type="String" />
+            <Parameter Name="ShopAddres" Mode="In" Type="String" />
+            <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Logs" EntityType="SansarEmporiamApplicationModel.Log" />
+          <FunctionImport Name="ProcedureToAddCustomerDetails" ReturnType="Collection(Decimal)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+            <Parameter Name="PurchaseItem" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="TotalAmount" Mode="In" Type="String" />
+            <Parameter Name="PaidAmount" Mode="In" Type="String" />
+            <Parameter Name="Balance" Mode="In" Type="String" />
+            <Parameter Name="DueDate" Mode="In" Type="String" />
+            <Parameter Name="RemainderMessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToAddStockDetail" ReturnType="Collection(Decimal)">
+            <Parameter Name="ItemName" Mode="In" Type="String" />
+            <Parameter Name="WholeSellPrice" Mode="In" Type="String" />
+            <Parameter Name="SellingPrice" Mode="In" Type="String" />
+            <Parameter Name="NumberOfCount" Mode="In" Type="String" />
+            <Parameter Name="Weight" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToAddWholeSellerDetail" ReturnType="Collection(Decimal)">
+            <Parameter Name="ShopName" Mode="In" Type="String" />
+            <Parameter Name="OwnerName" Mode="In" Type="String" />
+            <Parameter Name="ShopAddres" Mode="In" Type="String" />
+            <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToDeleteCustmerDetail">
+          <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToDeleteStockDetails">
+          <Parameter Name="StockID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToDeleteWholeSellerDetails">
+          <Parameter Name="ShopID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToGetCustomerByNameAndAddress" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetCustomerByNameAndAddress_Result)">
+          <Parameter Name="FirstNameOrAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToGetCustomerDetails" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetCustomerDetails_Result)" />
+          <FunctionImport Name="ProcedureToGetStockDetail" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetStockDetail_Result)" />
+          <FunctionImport Name="ProcedureToGetStockDetailByName" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetStockDetailByName_Result)">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToGetWholeSellerByNameOrAddress" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetWholeSellerByNameOrAddress_Result)">
+          <Parameter Name="FirstNameOrAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToGetWholesellerDetail" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetWholesellerDetail_Result)" />
+          <FunctionImport Name="ProcedureToUpdateCustomerDetail">
+            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+            <Parameter Name="PurchaseItem" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="TotalAmount" Mode="In" Type="String" />
+            <Parameter Name="PaidAmount" Mode="In" Type="String" />
+            <Parameter Name="Balance" Mode="In" Type="String" />
+            <Parameter Name="DueDate" Mode="In" Type="String" />
+            <Parameter Name="RemainderMessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToUpdateStockDetail">
+            <Parameter Name="StockID" Mode="In" Type="Int32" />
+            <Parameter Name="WholeSellPrice" Mode="In" Type="String" />
+            <Parameter Name="SellingPrice" Mode="In" Type="String" />
+            <Parameter Name="NumberOfCount" Mode="In" Type="String" />
+            <Parameter Name="Weight" Mode="In" Type="String" />
+            <Parameter Name="ItemName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcedureToUpdateWholeSellerDetails">
+            <Parameter Name="ShopID" Mode="In" Type="Int32" />
+            <Parameter Name="ShopName" Mode="In" Type="String" />
+            <Parameter Name="OwnerName" Mode="In" Type="String" />
+            <Parameter Name="ShopAddres" Mode="In" Type="String" />
+            <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ProcedureToGetShopDetails_Result">
+          <Property Type="Int32" Name="ShopID" Nullable="false" />
+          <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ProcedureToGetShopDetailsByID_Result">
+          <Property Type="Int32" Name="ShopID" Nullable="false" />
+          <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="ProcedureToGetCustomerByNameAndAddress_Result">
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PurchaseItem" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PurchaseDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TotalAmount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PaidAmount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Balance" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DueDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RemainderMessage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ProcedureToGetCustomerDetails_Result">
+          <Property Type="Int32" Name="ShopID" Nullable="false" />
+          <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ProcedureToGetStockDetail_Result">
+          <Property Type="Int32" Name="StockID" Nullable="false" />
+          <Property Type="String" Name="WholeSellPrice" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SellingPrice" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NumberOfCount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Weight" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ProcedureToGetStockDetailByName_Result">
+          <Property Type="Int32" Name="StockID" Nullable="false" />
+          <Property Type="String" Name="WholeSellPrice" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SellingPrice" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NumberOfCount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Weight" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ProcedureToGetWholeSellerByNameOrAddress_Result">
+          <Property Type="Int32" Name="ShopID" Nullable="false" />
+          <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ProcedureToGetWholesellerDetail_Result">
+          <Property Type="Int32" Name="ShopID" Nullable="false" />
+          <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SansarEmporiamApplicationModelStoreContainer" CdmEntityContainer="SansarEmporiamApplicationEntities">
+          <EntitySetMapping Name="tblCustomerDetails">
+            <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblCustomerDetail">
+              <MappingFragment StoreEntitySet="tblCustomerDetail">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="PurchaseItem" ColumnName="PurchaseItem" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="RemainderMessage" ColumnName="RemainderMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblShopDetails">
+            <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblShopDetail">
+              <MappingFragment StoreEntitySet="tblShopDetail">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStockDetails">
+            <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblStockDetail">
+              <MappingFragment StoreEntitySet="tblStockDetail">
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="WholeSellPrice" ColumnName="WholeSellPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="NumberOfCount" ColumnName="NumberOfCount" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWholeSellerDetails">
+            <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.tblWholeSellerDetail">
+              <MappingFragment StoreEntitySet="tblWholeSellerDetail">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToAddShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToAddShopDetails" />
+          <FunctionImportMapping FunctionImportName="ProcedureToDeleteShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToDeleteShopDetails" />
+          <FunctionImportMapping FunctionImportName="ProcedureToGetShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetShopDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetShopDetails_Result">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToGetShopDetailsByID" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetShopDetailsByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetShopDetailsByID_Result">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToUpdateShopDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToUpdateShopDetails" />
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="SansarEmporiamApplicationModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToAddCustomerDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToAddCustomerDetails" />
+          <FunctionImportMapping FunctionImportName="ProcedureToAddStockDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToAddStockDetail" />
+          <FunctionImportMapping FunctionImportName="ProcedureToAddWholeSellerDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToAddWholeSellerDetail" />
+          <FunctionImportMapping FunctionImportName="ProcedureToDeleteCustmerDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToDeleteCustmerDetail" />
+          <FunctionImportMapping FunctionImportName="ProcedureToDeleteStockDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToDeleteStockDetails" />
+          <FunctionImportMapping FunctionImportName="ProcedureToDeleteWholeSellerDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToDeleteWholeSellerDetails" />
+          <FunctionImportMapping FunctionImportName="ProcedureToGetCustomerByNameAndAddress" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetCustomerByNameAndAddress">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetCustomerByNameAndAddress_Result">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="PurchaseItem" ColumnName="PurchaseItem" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="RemainderMessage" ColumnName="RemainderMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToGetCustomerDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetCustomerDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetCustomerDetails_Result">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToGetStockDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetStockDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetStockDetail_Result">
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="WholeSellPrice" ColumnName="WholeSellPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="NumberOfCount" ColumnName="NumberOfCount" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToGetStockDetailByName" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetStockDetailByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetStockDetailByName_Result">
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="WholeSellPrice" ColumnName="WholeSellPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="NumberOfCount" ColumnName="NumberOfCount" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToGetWholeSellerByNameOrAddress" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetWholeSellerByNameOrAddress">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetWholeSellerByNameOrAddress_Result">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToGetWholesellerDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToGetWholesellerDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SansarEmporiamApplicationModel.ProcedureToGetWholesellerDetail_Result">
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcedureToUpdateCustomerDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToUpdateCustomerDetail" />
+          <FunctionImportMapping FunctionImportName="ProcedureToUpdateStockDetail" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToUpdateStockDetail" />
+          <FunctionImportMapping FunctionImportName="ProcedureToUpdateWholeSellerDetails" FunctionName="SansarEmporiamApplicationModel.Store.ProcedureToUpdateWholeSellerDetails" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

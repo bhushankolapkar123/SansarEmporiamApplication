@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SansarEmporiamApplicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Thread" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Logger" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Exception" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="tblCustomerDetail">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PurchaseItem" Type="varchar" MaxLength="50" />
+    <Property Name="PurchaseDate" Type="varchar" MaxLength="50" />
+    <Property Name="TotalAmount" Type="varchar" MaxLength="50" />
+    <Property Name="PaidAmount" Type="varchar" MaxLength="50" />
+    <Property Name="Balance" Type="varchar" MaxLength="50" />
+    <Property Name="DueDate" Type="varchar" MaxLength="50" />
+    <Property Name="RemainderMessage" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblShopDetail">
+    <Key>
+      <PropertyRef Name="ShopID" />
+    </Key>
+    <Property Name="ShopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopName" Type="varchar" MaxLength="50" />
+    <Property Name="OwnerName" Type="varchar" MaxLength="50" />
+    <Property Name="ShopAddress" Type="varchar" MaxLength="50" />
+    <Property Name="RegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblStockDetail">
+    <Key>
+      <PropertyRef Name="StockID" />
+    </Key>
+    <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WholeSellPrice" Type="varchar" MaxLength="50" />
+    <Property Name="SellingPrice" Type="varchar" MaxLength="50" />
+    <Property Name="NumberOfCount" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="varchar" MaxLength="50" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblWholeSellerDetail">
+    <Key>
+      <PropertyRef Name="ShopID" />
+    </Key>
+    <Property Name="ShopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopName" Type="varchar" MaxLength="50" />
+    <Property Name="OwnerName" Type="varchar" MaxLength="50" />
+    <Property Name="ShopAddress" Type="varchar" MaxLength="50" />
+    <Property Name="RegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="ProcedureToAddCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+    <Parameter Name="EmailID" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseItem" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="varchar" Mode="In" />
+    <Parameter Name="PaidAmount" Type="varchar" Mode="In" />
+    <Parameter Name="Balance" Type="varchar" Mode="In" />
+    <Parameter Name="DueDate" Type="varchar" Mode="In" />
+    <Parameter Name="RemainderMessage" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToAddShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopName" Type="varchar" Mode="In" />
+    <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+    <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+    <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToAddStockDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+    <Parameter Name="WholeSellPrice" Type="varchar" Mode="In" />
+    <Parameter Name="SellingPrice" Type="varchar" Mode="In" />
+    <Parameter Name="NumberOfCount" Type="varchar" Mode="In" />
+    <Parameter Name="Weight" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToAddWholeSellerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopName" Type="varchar" Mode="In" />
+    <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+    <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+    <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToDeleteCustmerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToDeleteShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToDeleteStockDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToDeleteWholeSellerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToGetCustomerByNameAndAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstNameOrAddress" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToGetCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ProcedureToGetShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ProcedureToGetShopDetailsByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToGetStockDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ProcedureToGetStockDetailByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToGetWholeSellerByNameOrAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstNameOrAddress" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToGetWholesellerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ProcedureToUpdateCustomerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+    <Parameter Name="EmailID" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseItem" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="varchar" Mode="In" />
+    <Parameter Name="PaidAmount" Type="varchar" Mode="In" />
+    <Parameter Name="Balance" Type="varchar" Mode="In" />
+    <Parameter Name="DueDate" Type="varchar" Mode="In" />
+    <Parameter Name="RemainderMessage" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToUpdateShopDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopID" Type="int" Mode="In" />
+    <Parameter Name="ShopName" Type="varchar" Mode="In" />
+    <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+    <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+    <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToUpdateStockDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="int" Mode="In" />
+    <Parameter Name="WholeSellPrice" Type="varchar" Mode="In" />
+    <Parameter Name="SellingPrice" Type="varchar" Mode="In" />
+    <Parameter Name="NumberOfCount" Type="varchar" Mode="In" />
+    <Parameter Name="Weight" Type="varchar" Mode="In" />
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProcedureToUpdateWholeSellerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShopID" Type="int" Mode="In" />
+    <Parameter Name="ShopName" Type="varchar" Mode="In" />
+    <Parameter Name="OwnerName" Type="varchar" Mode="In" />
+    <Parameter Name="ShopAddres" Type="varchar" Mode="In" />
+    <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SansarEmporiamApplicationModelStoreContainer">
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCustomerDetail" EntityType="Self.tblCustomerDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblShopDetail" EntityType="Self.tblShopDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStockDetail" EntityType="Self.tblStockDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWholeSellerDetail" EntityType="Self.tblWholeSellerDetail" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

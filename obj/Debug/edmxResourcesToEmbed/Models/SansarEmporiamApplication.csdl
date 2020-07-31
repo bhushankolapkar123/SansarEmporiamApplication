@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SansarEmporiamApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblCustomerDetail">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaidAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RemainderMessage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Balance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblShopDetail">
+    <Key>
+      <PropertyRef Name="ShopID" />
+    </Key>
+    <Property Name="ShopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShopAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblStockDetail">
+    <Key>
+      <PropertyRef Name="StockID" />
+    </Key>
+    <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WholeSellPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SellingPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOfCount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblWholeSellerDetail">
+    <Key>
+      <PropertyRef Name="ShopID" />
+    </Key>
+    <Property Name="ShopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShopAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="SansarEmporiamApplicationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCustomerDetails" EntityType="Self.tblCustomerDetail" />
+    <EntitySet Name="tblShopDetails" EntityType="Self.tblShopDetail" />
+    <EntitySet Name="tblStockDetails" EntityType="Self.tblStockDetail" />
+    <EntitySet Name="tblWholeSellerDetails" EntityType="Self.tblWholeSellerDetail" />
+    <FunctionImport Name="ProcedureToAddShopDetails" ReturnType="Collection(Decimal)">
+      <Parameter Name="ShopName" Mode="In" Type="String" />
+      <Parameter Name="OwnerName" Mode="In" Type="String" />
+      <Parameter Name="ShopAddres" Mode="In" Type="String" />
+      <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToDeleteShopDetails">
+      <Parameter Name="ShopID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToGetShopDetails" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetShopDetails_Result)" />
+    <FunctionImport Name="ProcedureToGetShopDetailsByID" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetShopDetailsByID_Result)">
+      <Parameter Name="ShopID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToUpdateShopDetails">
+      <Parameter Name="ShopID" Mode="In" Type="Int32" />
+      <Parameter Name="ShopName" Mode="In" Type="String" />
+      <Parameter Name="OwnerName" Mode="In" Type="String" />
+      <Parameter Name="ShopAddres" Mode="In" Type="String" />
+      <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Logs" EntityType="SansarEmporiamApplicationModel.Log" />
+    <FunctionImport Name="ProcedureToAddCustomerDetails" ReturnType="Collection(Decimal)">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+      <Parameter Name="EmailID" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+      <Parameter Name="PurchaseItem" Mode="In" Type="String" />
+      <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="String" />
+      <Parameter Name="PaidAmount" Mode="In" Type="String" />
+      <Parameter Name="Balance" Mode="In" Type="String" />
+      <Parameter Name="DueDate" Mode="In" Type="String" />
+      <Parameter Name="RemainderMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToAddStockDetail" ReturnType="Collection(Decimal)">
+      <Parameter Name="ItemName" Mode="In" Type="String" />
+      <Parameter Name="WholeSellPrice" Mode="In" Type="String" />
+      <Parameter Name="SellingPrice" Mode="In" Type="String" />
+      <Parameter Name="NumberOfCount" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToAddWholeSellerDetail" ReturnType="Collection(Decimal)">
+      <Parameter Name="ShopName" Mode="In" Type="String" />
+      <Parameter Name="OwnerName" Mode="In" Type="String" />
+      <Parameter Name="ShopAddres" Mode="In" Type="String" />
+      <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToDeleteCustmerDetail">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToDeleteStockDetails">
+      <Parameter Name="StockID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToDeleteWholeSellerDetails">
+      <Parameter Name="ShopID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToGetCustomerByNameAndAddress" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetCustomerByNameAndAddress_Result)">
+      <Parameter Name="FirstNameOrAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToGetCustomerDetails" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetCustomerDetails_Result)" />
+    <FunctionImport Name="ProcedureToGetStockDetail" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetStockDetail_Result)" />
+    <FunctionImport Name="ProcedureToGetStockDetailByName" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetStockDetailByName_Result)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToGetWholeSellerByNameOrAddress" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetWholeSellerByNameOrAddress_Result)">
+      <Parameter Name="FirstNameOrAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToGetWholesellerDetail" ReturnType="Collection(SansarEmporiamApplicationModel.ProcedureToGetWholesellerDetail_Result)" />
+    <FunctionImport Name="ProcedureToUpdateCustomerDetail">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+      <Parameter Name="EmailID" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+      <Parameter Name="PurchaseItem" Mode="In" Type="String" />
+      <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="String" />
+      <Parameter Name="PaidAmount" Mode="In" Type="String" />
+      <Parameter Name="Balance" Mode="In" Type="String" />
+      <Parameter Name="DueDate" Mode="In" Type="String" />
+      <Parameter Name="RemainderMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToUpdateStockDetail">
+      <Parameter Name="StockID" Mode="In" Type="Int32" />
+      <Parameter Name="WholeSellPrice" Mode="In" Type="String" />
+      <Parameter Name="SellingPrice" Mode="In" Type="String" />
+      <Parameter Name="NumberOfCount" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="String" />
+      <Parameter Name="ItemName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureToUpdateWholeSellerDetails">
+      <Parameter Name="ShopID" Mode="In" Type="Int32" />
+      <Parameter Name="ShopName" Mode="In" Type="String" />
+      <Parameter Name="OwnerName" Mode="In" Type="String" />
+      <Parameter Name="ShopAddres" Mode="In" Type="String" />
+      <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ProcedureToGetShopDetails_Result">
+    <Property Type="Int32" Name="ShopID" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ProcedureToGetShopDetailsByID_Result">
+    <Property Type="Int32" Name="ShopID" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="ProcedureToGetCustomerByNameAndAddress_Result">
+    <Property Type="Int32" Name="CustomerID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CustomerAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PurchaseItem" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PurchaseDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalAmount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaidAmount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Balance" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DueDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RemainderMessage" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="ProcedureToGetCustomerDetails_Result">
+    <Property Type="Int32" Name="ShopID" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ProcedureToGetStockDetail_Result">
+    <Property Type="Int32" Name="StockID" Nullable="false" />
+    <Property Type="String" Name="WholeSellPrice" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SellingPrice" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NumberOfCount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Weight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ProcedureToGetStockDetailByName_Result">
+    <Property Type="Int32" Name="StockID" Nullable="false" />
+    <Property Type="String" Name="WholeSellPrice" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SellingPrice" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NumberOfCount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Weight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ProcedureToGetWholeSellerByNameOrAddress_Result">
+    <Property Type="Int32" Name="ShopID" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ProcedureToGetWholesellerDetail_Result">
+    <Property Type="Int32" Name="ShopID" Nullable="false" />
+    <Property Type="String" Name="ShopName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ShopAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
