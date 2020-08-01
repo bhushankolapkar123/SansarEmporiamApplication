@@ -5,7 +5,13 @@ using System.Web;
 
 namespace SansarEmporiamApplication.Models
 {
-    public class IWholeSellerRepository
+    public interface IWholeSellerRepository: IDisposable
     {
+        IEnumerable<tblWholeSellerDetail> GetAllWholeSellerDetails();
+        tblWholeSellerDetail GetAllWholeSellerDetailByID(int emp_ID);
+        int AddWholeSellerDetails(tblWholeSellerDetail emp);
+        bool DeleteWholeSellerDetail(int emp_ID);
+        bool UpdateWholeSellerDetail(tblWholeSellerDetail emp);
+        int Save();
     }
 }

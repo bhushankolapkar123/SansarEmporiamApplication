@@ -22,7 +22,7 @@ namespace SansarEmporiamApplication.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult PostNewShopDetail(tblCustomerDetail customerDetail)
+        public IHttpActionResult PostNewCustomerDetail(tblCustomerDetail customerDetail)
         {
             try
             {
@@ -30,10 +30,12 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                 customerRepository.AddCustomerDetail(customerDetail);
                 customerRepository.Save();
+                log.Info("Log Info Message - Record Saved Successully");
                 return Ok();
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -43,31 +45,30 @@ namespace SansarEmporiamApplication.Controllers
 
         }
         [HttpGet]
-        [Route("api/customers/")]
-        public IHttpActionResult GetShopDetail()
+        [Route("api/customer/")]
+        public IHttpActionResult GetCustomerDetail()
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest("Invalid data.");
-                IList<tblCustomerDetail> shopDetails = null;
-                shopDetails = customerRepository.GetAllCustomerDetails().ToList();
+                IList<tblCustomerDetail> customerDetails = null;
+                customerDetails = customerRepository.GetAllCustomerDetails().ToList();
 
-                log.Info("Log Info Message");
-                log.Debug("Log Debug Message");
-                log.Error("Log Error Message");
-                log.Warn("Log Warning Message");
+                
+                
 
-                if (shopDetails.Count == 0)
+                if (customerDetails.Count == 0)
                 {
                     return NotFound();
                 }
 
-
-                return Ok(shopDetails);
+                log.Info("Log Info Message - Record Retrived Successfully");
+                return Ok(customerDetails);
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -78,25 +79,27 @@ namespace SansarEmporiamApplication.Controllers
         }
         [HttpGet]
         [Route("api/customer/{id}")]
-        public IHttpActionResult GetShopDetailByID(string name)
+        public IHttpActionResult GetCustomerDetailByNaame(string name)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest("Invalid data.");
 
-                tblCustomerDetail shopDetails = null;
+                tblCustomerDetail customerDetails = null;
 
-                shopDetails = customerRepository.GetAllCustomerDetailByName(name);
+                customerDetails = customerRepository.GetAllCustomerDetailByName(name);
 
-                if (!shopDetails.Equals(0))
+                if (!customerDetails.Equals(0))
                 {
                     return NotFound();
                 }
-                return Ok(shopDetails);
+                log.Info("Log Info Message - Record Retrived By ID Successully");
+                return Ok(customerDetails);
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -106,7 +109,7 @@ namespace SansarEmporiamApplication.Controllers
 
         }
         [HttpDelete]
-        public IHttpActionResult DeletShopDetail(int customerDetail)
+        public IHttpActionResult DeleteCustomerDetail(int customerDetail)
         {
             try
             {
@@ -114,10 +117,12 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                 customerRepository.DeleteCustomerDetail(customerDetail);
                 customerRepository.Save();
+                log.Info("Log Info Message - Record Deleted Successully");
                 return Ok();
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -127,7 +132,7 @@ namespace SansarEmporiamApplication.Controllers
 
         }
         [HttpPut]
-        public IHttpActionResult UpdateShopDetail(tblCustomerDetail customerDetail)
+        public IHttpActionResult UpdateCustomerDetail(tblCustomerDetail customerDetail)
         {
             try
             {
@@ -135,10 +140,12 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                 customerRepository.UpdateCustomerDetail(customerDetail);
                 customerRepository.Save();
+                log.Info("Log Info Message - Record Updated Successully");
                 return Ok();
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally

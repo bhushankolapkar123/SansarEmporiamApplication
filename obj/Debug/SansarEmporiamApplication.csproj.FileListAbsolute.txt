@@ -113,8 +113,8 @@ D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplicat
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\System.Web.Http.Owin.xml
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csprojAssemblyReference.cache
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csproj.CoreCompileInputs.cache
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csproj.CopyComplete
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.dll
 D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.pdb
-D:\Sansar Emporiam Application\Sansar EmporiamApplication\SansarEmporiamApplication\obj\Debug\SansarEmporiamApplication.csprojAssemblyReference.cache

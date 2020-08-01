@@ -29,10 +29,12 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                     shopRepository.AddShopDetails(shopDetail);
                     shopRepository.Save();
-                    return Ok();
+                log.Info("Log Info Message - Records Saved Successfully");
+                return Ok();
             }
             catch (Exception ex )
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -42,7 +44,7 @@ namespace SansarEmporiamApplication.Controllers
             
         }
         [HttpGet]
-        [Route("api/customers/")]
+        [Route("api/shopdetail/")]
         public IHttpActionResult GetShopDetail()
         {
             try
@@ -51,22 +53,17 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                 IList<tblShopDetail> shopDetails = null;
                 shopDetails = shopRepository.GetAllShopDetails().ToList();
-
-                log.Info("Log Info Message");
-                log.Debug("Log Debug Message");
-                log.Error("Log Error Message");
-                log.Warn("Log Warning Message");
-
                 if (shopDetails.Count == 0)
                 {
                     return NotFound();
                 }
 
-
+                log.Info("Log Info Message - Records Retrived Successfully");
                 return Ok(shopDetails);
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -92,10 +89,12 @@ namespace SansarEmporiamApplication.Controllers
                 {
                     return NotFound();
                 }
+                log.Info("Log Info Message - Records Retrived By ID Successfully");
                 return Ok(shopDetails);
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -113,10 +112,12 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                 shopRepository.DeleteShopDetail(ShopID);
                 shopRepository.Save();
+                log.Info("Log Info Message - Records Deleted Successfully");
                 return Ok();
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
@@ -134,10 +135,12 @@ namespace SansarEmporiamApplication.Controllers
                     return BadRequest("Invalid data.");
                 shopRepository.UpdateShopDetail(shopDetail);
                 shopRepository.Save();
+                log.Info("Log Info Message - Records Updated Successfully");
                 return Ok();
             }
             catch (Exception ex)
             {
+                log.Error("Log Error Message" + ex);
                 throw ex;
             }
             finally
